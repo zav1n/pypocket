@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { margin: 0; background: #020617; }
+.cm-editor { font-size: 14px; }
+/* markdown 里代码块在深色底上可读 */
+.prose pre { background: #0f172a; border: 1px solid #1e293b; border-radius: 0.75rem; padding: 0.75rem; overflow: auto; }
+.prose code { color: #a7f3d0; }
+.prose pre code { color: #e2e8f0; }
+.prose h3 { color: #f1f5f9; margin: 0.5rem 0; }
+.prose p { margin: 0.5rem 0; }
