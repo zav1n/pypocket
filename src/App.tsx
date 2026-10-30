@@ -181,7 +181,6 @@ export default function App() {
           </div>
 
           <footer className="text-xs text-slate-500 leading-relaxed mt-6">
-            免费说明：前端托管（Cloudflare Pages / Vercel 免费版）+ 浏览器本地 Pyodide + 本地进度，本身就是 0 费用。
             AI 助教和 Supabase 同步是可选项：不填 Key、不配 Supabase，练题和打卡照常用。
             想加新关卡？改 <code>src/data/courses.ts</code> 里加一个对象，重新部署即可。
           </footer>

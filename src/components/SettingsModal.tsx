@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { X } from 'lucide-react';
 import { AI_PRESETS, getAiSettings } from '../services/ai';
 import { hasSupabase } from '../services/supabase';
+import { APP_VERSION, APP_BUILD_DATE } from '../version';
+import { COURSES } from '../data/courses';
 
 interface Props {
   open: boolean;
@@ -67,6 +69,12 @@ export default function SettingsModal({ open, userName, onUserName, onClose }: P
         <h4 className="font-medium mt-5 mb-1 text-sm">进度同步</h4>
         <p className="text-xs text-slate-400 leading-relaxed">
           当前：{hasSupabase ? '已接 Supabase 云端同步（免费版）' : '本地浏览器保存（0 配置、0 费用）。想多设备同步时，再按 README 配 Supabase，不配也能完整使用。'}
+        </p>
+
+        <h4 className="font-medium mt-5 mb-1 text-sm">版本</h4>
+        <p className="text-xs text-slate-400 leading-relaxed">
+          当前版本：v{APP_VERSION} · 更新于 {APP_BUILD_DATE} · 共 {COURSES.length} 关
+          <br />对照最新发布时的版本号和日期，就能看出手上这个是不是最新版。
         </p>
 
         <button onClick={save} className="mt-5 w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm">保存设置</button>
