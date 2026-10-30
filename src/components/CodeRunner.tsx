@@ -89,7 +89,7 @@ export default function CodeRunner({ lesson, initialCode, onPassed, onFailed, on
 
   const busy = status === 'loading-py' || status === 'running';
   // 逻辑实战和项目关代码更长，编辑器给高一点，不然 80 行写起来很难受
-  const editorHeight = lesson.track === 'logic' ? '420px' : lesson.track === 'project' ? '340px' : '260px';
+  const editorHeight = lesson.track === 'logic' || lesson.track === 'textbook' ? '420px' : lesson.track === 'project' ? '340px' : '260px';
 
   return (
     <div>

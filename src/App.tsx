@@ -12,6 +12,7 @@ import StatsDashboard from './components/StatsDashboard';
 import Playground from './components/Playground';
 import WrongBook from './components/WrongBook';
 import Stage3Guide from './components/Stage3Guide';
+import Roadmap from './components/Roadmap';
 import { loadActivity, recordPass, recordCheckin, computeStats, type ActivityMap } from './services/stats';
 import { loadWrongBook, recordFailure, markMastered, deleteWrongItem, clearMastered, pendingCount, type WrongBook as WrongBookType } from './services/wrongbook';
 
@@ -23,7 +24,7 @@ export default function App() {
   const [editorKey, setEditorKey] = useState(0);
   const [savedCode, setSavedCode] = useState<Record<string, string>>({});
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [view, setView] = useState<'learn' | 'stats' | 'playground' | 'wrongbook' | 'stage3'>('learn');
+  const [view, setView] = useState<'learn' | 'stats' | 'playground' | 'wrongbook' | 'stage3' | 'roadmap'>('learn');
   const [activity, setActivity] = useState<ActivityMap>({});
   const [wrongBook, setWrongBook] = useState<WrongBookType>({});
   const [reviewCode, setReviewCode] = useState<{ lessonId: string; code: string; nonce: number } | null>(null);
@@ -105,6 +106,7 @@ export default function App() {
             <button onClick={() => setView('wrongbook')} className={`text-xs px-3 py-1.5 rounded-full border ${view === 'wrongbook' ? 'border-emerald-400 bg-emerald-500/20 text-emerald-200' : 'border-slate-700 text-slate-300'}`}>📕 错题本{pendingCount(wrongBook) > 0 ? ` · ${pendingCount(wrongBook)} 待复习` : ''}</button>
             <button onClick={() => setView('stats')} className={`text-xs px-3 py-1.5 rounded-full border ${view === 'stats' ? 'border-emerald-400 bg-emerald-500/20 text-emerald-200' : 'border-slate-700 text-slate-300'}`}>🔥 打卡统计{stats.streak > 0 ? ` · ${stats.streak} 天连打` : ''}</button>
             <button onClick={() => setView('stage3')} className={`text-xs px-3 py-1.5 rounded-full border ${view === 'stage3' ? 'border-violet-400 bg-violet-500/20 text-violet-200' : 'border-slate-700 text-slate-300'}`}>🚀 第三阶段指南</button>
+            <button onClick={() => setView('roadmap')} className={`text-xs px-3 py-1.5 rounded-full border ${view === 'roadmap' ? 'border-emerald-400 bg-emerald-500/20 text-emerald-200' : 'border-slate-700 text-slate-300'}`}>🗺️ 学习路线与方法</button>
           </div>
         </div>
       </header>
@@ -131,6 +133,11 @@ export default function App() {
       ) : view === 'stage3' ? (
         <main className="max-w-5xl mx-auto px-4 py-4">
           <Stage3Guide />
+          <button onClick={() => setView('learn')} className="mt-4 w-full py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm">← 回去继续做题</button>
+        </main>
+      ) : view === 'roadmap' ? (
+        <main className="max-w-5xl mx-auto px-4 py-4">
+          <Roadmap />
           <button onClick={() => setView('learn')} className="mt-4 w-full py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm">← 回去继续做题</button>
         </main>
       ) : (

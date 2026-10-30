@@ -1,8 +1,9 @@
 import { LOGIC_COURSES } from './logicCourses';
+import { TEXTBOOK_COURSES } from './textbookCourses';
 
 export interface Lesson {
   id: string;
-  track: 'rookie' | 'spider' | 'backend' | 'ai' | 'advanced' | 'project' | 'logic';
+  track: 'rookie' | 'spider' | 'backend' | 'ai' | 'advanced' | 'project' | 'logic' | 'textbook';
   title: string;
   markdown: string;
   starterCode: string;
@@ -18,6 +19,7 @@ export const TRACKS: Record<Lesson['track'], { label: string; desc: string }> = 
   advanced: { label: '进阶篇', desc: '第二阶段：类、异常、文件，迈向独立写程序' },
   project: { label: '实战项目', desc: '第二阶段：三条线各做一个能跑通的小项目' },
   logic: { label: '逻辑实战', desc: '有状态、多步骤、有边界的小系统，代码量上一个台阶' },
+  textbook: { label: '教科书进阶', desc: '按主流教科书补齐的核心章节：切片、while、递归、生成器、继承、JSON、正则进阶等' },
 };
 
 export const COURSES: Lesson[] = [
@@ -456,5 +458,6 @@ print(greet("小白", "早上好"))  # 早上好，小白
   },
 ];
 
-// 逻辑实战线单独放一个文件，避免主课程文件过长；运行时拼进总课程表
+// 逻辑实战线、教科书进阶线单独放文件，避免主课程文件过长；运行时拼进总课程表
 COURSES.push(...LOGIC_COURSES);
+COURSES.push(...TEXTBOOK_COURSES);
